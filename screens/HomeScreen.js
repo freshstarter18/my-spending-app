@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Text
+  Text,
+  Platform
 } from 'react-native';
 
 export default class HomeScreen extends React.Component {
@@ -25,6 +26,10 @@ export default class HomeScreen extends React.Component {
             Magic 25.05.19 
             </Text>
         </ScrollView>
+        <View style={styles.tabBarInfoContainer}>
+          <Text style={{fontWeight: 'bold'}}>Total</Text>
+          <Text style={{fontWeight: 'bold'}}>RM 10</Text>
+        </View>
       </View>
     );
   }
@@ -39,4 +44,28 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     alignItems: 'center'
   },
+
+  tabBarInfoContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { height: -3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
+    alignItems: 'center',
+    backgroundColor: '#fbfbfb',
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  }
 });
